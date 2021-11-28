@@ -177,7 +177,7 @@ class Company {
     }
     updateEmployee(){
         //console.log(this)
-        //const currentCompany = this;
+        const currentCompany = this;
         db.query(`SELECT id, first_name, last_name FROM employee;`, function(err, results){
             const employeeNames = results.map(employee => (
                 {
@@ -214,7 +214,6 @@ class Company {
                                 }
                             ])
                             .then(roleVal => {
-                                console.log(roleVal);
                                 db.query(`UPDATE employee SET role_id = ? WHERE id = ?;`, [roleVal.newRole, val.chosenEmployee], function(err, results){
                                     if (err){
                                         throw err;
@@ -222,11 +221,10 @@ class Company {
                                     console.log('Successfully Updated!');
                                 })
                             })
-                    })
-                    //currentCompany.manageCompany();   
-                    this.manageCompany();                 
-                })
-        })
+                    })  
+                    currentCompany.manageCompany();                 
+                });
+        });
     }
     quit() {
         console.log('\nGoodbye!');
