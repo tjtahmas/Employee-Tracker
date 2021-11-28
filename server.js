@@ -16,10 +16,10 @@ const db = mysql.createConnection(
     // MySQL username,
     user: 'root',
     // MySQL password
-    password: '',
-    database: 'employees_db'
+    password: 'root',
+    database: 'company_db'
   },
-  console.log(`Connected to the employees_db database.`)
+  console.log(`Connected to the root_db database.`)
 );
 
 // Query database
